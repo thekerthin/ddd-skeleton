@@ -1,0 +1,17 @@
+{
+  "name": "ddd-skeleton",
+  "description": "DDD Skeleton",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@nestjs/common": "^7.6.15",
+    "@nestjs/core": "^7.6.15",
+    "reflect-metadata": "^0.1.13",
+    "rxjs": "^6.6.7",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "@types/uuid": "^8.3.0"
+  }
+}
