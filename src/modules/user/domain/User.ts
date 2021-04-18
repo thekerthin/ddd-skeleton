@@ -1,5 +1,6 @@
 import { UserEmail } from "./UserEmail";
 import { UserName } from "./UserName";
+import { UserAddress } from "./UserAddress";
 import { UserId } from "./UserId";
 import { UserCreated } from "./events/userCreated";
 import { UserDeleted } from "./events/userDeleted";
@@ -10,6 +11,7 @@ import { AggregateRoot } from "../../../shared/domain/AggregateRoot";
 interface UserProps {
   email: UserEmail;
   username: UserName;
+  address: UserAddress;
   isEmailVerified?: boolean;
   isAdminUser?: boolean;
   isDeleted?: boolean;
@@ -29,6 +31,10 @@ export class User extends AggregateRoot<UserProps> {
 
   get username(): UserName {
     return this.props.username;
+  }
+
+  get address(): UserAddress {
+    return this.props.address;
   }
 
   get isDeleted(): boolean {

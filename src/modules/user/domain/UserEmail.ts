@@ -1,18 +1,20 @@
+import { ValueObjectProp } from 'shared/domain/decorators/ValueObjectProp';
 import { ValueObject } from '../../../shared/domain/ValueObject'
 
-export interface UserEmailProps {
+export abstract class Props {
+  @ValueObjectProp()
   value: string;
 }
 
-export class UserEmail extends ValueObject<UserEmailProps> {
+export class UserEmail extends ValueObject<Props> {
 
   get value(): string {
     return this.props.value;
   }
 
-  private constructor(props: UserEmailProps) {
-    super(props);
-  }
+  // private constructor(props: Props) {
+  //   super(props);
+  // }
 
   private static isValidEmail(email: string) {
     var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
