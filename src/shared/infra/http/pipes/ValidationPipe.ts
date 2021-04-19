@@ -17,7 +17,7 @@ export class ValidationPipe implements PipeTransform {
         return params;
       }, {});
 
-      const valueObjectInstance = new valueObject(valueObjectProps);
+      const valueObjectInstance = valueObject.create(valueObjectProps);
 
       // TODO: wrap exception an handle it
 

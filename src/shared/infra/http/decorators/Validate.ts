@@ -1,10 +1,10 @@
 import { ValueObject, ValueObjectProps } from "shared/domain/ValueObject";
 
-type ValueObjectClass = { new(props: ValueObjectProps): ValueObject<ValueObjectProps>; };
+type ValueObjectClass = {
+  create(props: ValueObjectProps): ValueObject<any>;
+};
 
-type Props = { [index: string]: any };
-
-export function Validate(valueObject: ValueObjectClass, props: Props) {
+export function Validate(valueObject: ValueObjectClass, props: ValueObjectProps) {
 
   return function (target: any, propertyKey: string) {
     const prototype = target.constructor;

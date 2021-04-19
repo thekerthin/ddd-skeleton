@@ -15,9 +15,9 @@ export class UserName extends ValueObject<Props> {
     return this.props.name;
   }
 
-  // private constructor(props: UserNameProps) {
-  //   super(props);
-  // }
+  private constructor(props: Props) {
+    super(props);
+  }
 
   public static create(props: Props): UserName {
     const usernameResult = Guard.againstNullOrUndefined(props.name, 'username');

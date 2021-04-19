@@ -18,9 +18,9 @@ export class UserAddress extends ValueObject<Props> {
     return `${this.props.street}, ${this.props.city}, ${this.props.country}`;
   }
 
-  // private constructor(props: Props) {
-  //   super(props);
-  // }
+  private constructor(props: Props) {
+    super(props);
+  }
 
   public static create(props: Props): UserAddress {
     return new UserAddress(props);

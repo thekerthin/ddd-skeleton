@@ -65,20 +65,21 @@ export class User extends AggregateRoot<UserProps> {
   }
 
   private constructor(props: UserProps, id?: UniqueEntityID) {
-    super(props, id)
+    super(props, id);
   }
 
   public static create(props: UserProps, id?: UniqueEntityID): User {
-    const guardResult = Guard.againstNullOrUndefinedBulk([
-      { argument: props.username, argumentName: 'username' },
-      { argument: props.email, argumentName: 'email' }
-    ]);
+    // const guardResult = Guard.againstNullOrUndefinedBulk([
+    //   { argument: props.username, argumentName: 'username' },
+    //   { argument: props.email, argumentName: 'email' }
+    // ]);
 
-    if (!guardResult.succeeded) {
-      // throw an exception guardResult.message
-    }
+    // if (!guardResult.succeeded) {
+    //   // throw an exception guardResult.message
+    // }
 
     const isNewUser = !!id === false;
+
     const user = new User({
       ...props,
       isDeleted: props.isDeleted ? props.isDeleted : false,
