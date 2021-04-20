@@ -1,4 +1,4 @@
-import { ValueObjectProp } from "shared/domain/decorators/ValueObjectProp";
+import { ValueObjectProp } from "../../../shared/domain/decorators/ValueObjectProp";
 import { ValueObject } from "../../../shared/domain/ValueObject";
 
 export abstract class Props {
@@ -14,7 +14,7 @@ export abstract class Props {
 
 export class UserAddress extends ValueObject<Props> {
 
-  get value(): string {
+  toValue(): string {
     return `${this.props.street}, ${this.props.city}, ${this.props.country}`;
   }
 

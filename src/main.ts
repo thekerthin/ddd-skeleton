@@ -1,3 +1,5 @@
+import 'reflect-metadata';
+
 import * as dotenvSafe from 'dotenv-safe';
 
 dotenvSafe.config();

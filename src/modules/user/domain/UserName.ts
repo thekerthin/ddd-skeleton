@@ -1,6 +1,6 @@
 import { ValueObject } from "../../../shared/domain/ValueObject";
 import { Guard } from "../../../shared/core/Guard";
-import { ValueObjectProp } from "shared/domain/decorators/ValueObjectProp";
+import { ValueObjectProp } from "../../../shared/domain/decorators/ValueObjectProp";
 
 export abstract class Props {
   @ValueObjectProp()
@@ -11,7 +11,7 @@ export class UserName extends ValueObject<Props> {
   // public static maxLength: number = 15;
   // public static minLength: number = 2;
 
-  get value(): string {
+  toValue(): string {
     return this.props.name;
   }
 

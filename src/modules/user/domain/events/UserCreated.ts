@@ -12,6 +12,6 @@ export class UserCreated implements IDomainEvent {
   }
 
   getAggregateId(): UniqueEntityID {
-    return this.user.id;
+    return this.user.userId.props.id;
   }
 }

@@ -9,6 +9,8 @@ export abstract class ValueObject<T extends ValueObjectProps>  {
     this.props = { ...props };
   }
 
+  abstract toValue(): string | number | boolean | Object | Array<string | number | boolean | Object>;
+
   public equals(vo?: ValueObject<T>): boolean {
     if (vo === null || vo === undefined) {
       return false;

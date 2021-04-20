@@ -1,3 +1,5 @@
+import { PrimaryKey } from '@mikro-orm/core';
+
 import { UniqueEntityID } from './UniqueEntityID';
 
 const isEntity = (v: any): v is Entity<any> => {
@@ -5,11 +7,14 @@ const isEntity = (v: any): v is Entity<any> => {
 };
 
 export abstract class Entity<T> {
-  protected readonly _id: UniqueEntityID;
+
+  @PrimaryKey({ type: 'uuid' })
+  protected readonly id: UniqueEntityID;
+
   public readonly props: T;
 
   constructor(props: T, id?: UniqueEntityID) {
-    this._id = id ? id : new UniqueEntityID();
+    this.id = id ? id : new UniqueEntityID();
     this.props = props;
   }
 
@@ -26,6 +31,7 @@ export abstract class Entity<T> {
       return false;
     }
 
-    return this._id.equals(object._id);
+    return this.id.equals(object.id);
   }
+
 }

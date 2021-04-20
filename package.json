@@ -6,10 +6,25 @@
   "license": "MIT",
   "scripts": {
     "build": "rimraf dist && tsc",
-    "start": "nodemon"
+    "start": "nodemon",
+    "migration:create": "mikro-orm migration:create",
+    "migration:run": "mikro-orm migration:up"
+  },
+  "mikro-orm": {
+    "useTsNode": true,
+    "configPaths": [
+      ".mikro-orm.config.ts"
+    ]
+  },
+  "peerDependencies": {
+    "@mikro-orm/core": "^4.5.3"
   },
   "dependencies": {
     "@kerthin/utils": "^0.0.2-0",
+    "@mikro-orm/core": "^4.5.3",
+    "@mikro-orm/nestjs": "^4.2.0",
+    "@mikro-orm/postgresql": "^4.5.3",
+    "@mikro-orm/reflection": "^4.5.3",
     "@nestjs/common": "^7.6.15",
     "@nestjs/core": "^7.6.15",
     "@nestjs/platform-express": "^7.6.15",
@@ -20,6 +35,7 @@
     "uuid": "^8.3.2"
   },
   "devDependencies": {
+    "@mikro-orm/cli": "^4.5.3",
     "@types/node": "^14.14.41",
     "@types/uuid": "^8.3.0",
     "@typescript-eslint/eslint-plugin": "^4.22.0",
