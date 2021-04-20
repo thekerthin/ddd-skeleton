@@ -10,7 +10,7 @@ type UseCaseResult = UserDTO | void;
 @Injectable()
 export class CreateUserUseCase implements UseCase<CreateUserDTO, UseCaseResult> {
 
-  // constructor(private readonly userRepository: UserRepository) { }
+  constructor(private readonly userRepository: UserRepository) { }
 
   execute(data: CreateUserDTO): UseCaseResult {
     // 1. mapping "data" to value objects and validate it
@@ -23,6 +23,7 @@ export class CreateUserUseCase implements UseCase<CreateUserDTO, UseCaseResult> 
 
     const user = User.create(data);
     console.log('user', user);
+    console.log('this.userRepository', this.userRepository);
 
     // 4. validate entity/aggregate and get values to save in repository
 

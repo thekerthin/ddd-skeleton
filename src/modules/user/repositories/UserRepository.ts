@@ -1,10 +1,11 @@
 import { User } from "../domain/User";
-import { UserEmail } from "../domain/UserEmail";
 import { UserName } from "../domain/UserName";
+import { Repository } from "../../../shared/infra/database/Repository";
+import { EntityRepository } from "@mikro-orm/core";
 
-export abstract class UserRepository {
+export abstract class UserRepository extends Repository<User> {
 
-  abstract exists(userEmail: UserEmail): Promise<boolean>;
+  protected repo: EntityRepository<User> = this.orm.em.getRepository(User);
 
   abstract getUserByUserId(userId: string): Promise<User>;
 

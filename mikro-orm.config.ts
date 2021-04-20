@@ -15,12 +15,12 @@ export default {
   },
   entities: [
     './dist/modules/user/domain/User.js',
-    './dist/shared/domain/AggregateRoot.js',
     './dist/shared/domain/Entity.js',
+    './dist/shared/domain/AggregateRoot.js',
   ],
   entitiesTs: [
     './src/modules/user/domain/User.ts',
-    './src/shared/domain/AggregateRoot.ts',
     './src/shared/domain/Entity.ts',
+    './src/shared/domain/AggregateRoot.ts',
   ],
 } as MikroOrmModuleSyncOptions;
