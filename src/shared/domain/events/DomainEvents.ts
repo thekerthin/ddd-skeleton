@@ -13,9 +13,8 @@ export class DomainEvents {
    * events to eventually be dispatched when the infrastructure commits
    * the unit of work.
    */
-
   public static markAggregateForDispatch(aggregate: AggregateRoot<any>): void {
-    const aggregateFound = !!this.findMarkedAggregateByID('' as any);
+    const aggregateFound = !!this.findMarkedAggregateByID("" as any);
 
     if (!aggregateFound) {
       this.markedAggregates.push(aggregate);
@@ -23,15 +22,21 @@ export class DomainEvents {
   }
 
   private static dispatchAggregateEvents(aggregate: AggregateRoot<any>): void {
-    aggregate.domainEvents.forEach((event: IDomainEvent) => this.dispatch(event));
+    aggregate.domainEvents.forEach((event: IDomainEvent) =>
+      this.dispatch(event)
+    );
   }
 
-  private static removeAggregateFromMarkedDispatchList(aggregate: AggregateRoot<any>): void {
+  private static removeAggregateFromMarkedDispatchList(
+    aggregate: AggregateRoot<any>
+  ): void {
     const index = this.markedAggregates.findIndex((a) => a.equals(aggregate));
     this.markedAggregates.splice(index, 1);
   }
 
-  private static findMarkedAggregateByID(id: UniqueEntityID): AggregateRoot<any> {
+  private static findMarkedAggregateByID(
+    id: UniqueEntityID
+  ): AggregateRoot<any> {
     let found: AggregateRoot<any> = null;
     for (let aggregate of this.markedAggregates) {
       // if (aggregate.id.equals(id)) {
@@ -52,7 +57,10 @@ export class DomainEvents {
     }
   }
 
-  public static register(callback: (event: IDomainEvent) => void, eventClassName: string): void {
+  public static register(
+    callback: (event: IDomainEvent) => void,
+    eventClassName: string
+  ): void {
     if (!this.handlersMap.hasOwnProperty(eventClassName)) {
       this.handlersMap[eventClassName] = [];
     }

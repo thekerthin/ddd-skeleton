@@ -1,10 +1,8 @@
-import * as uuid from 'uuid';
-import { Identifier } from './Identifier'
+import * as uuid from "uuid";
+import { Identifier } from "./Identifier";
 
-export class UniqueEntityID extends Identifier<string | number>{
-
+export class UniqueEntityID extends Identifier<string | number> {
   constructor(id?: string | number) {
-    super(id ? id : uuid.v4())
+    super(id ? id : uuid.v4());
   }
-
 }

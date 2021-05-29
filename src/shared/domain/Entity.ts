@@ -1,21 +1,21 @@
-import { PrimaryKey } from '@mikro-orm/core';
+import { PrimaryKey } from "@mikro-orm/core";
 
-import { UniqueEntityID } from './UniqueEntityID';
+import { UniqueEntityID } from "./UniqueEntityID";
 
 const isEntity = (v: any): v is Entity<any> => {
   return v instanceof Entity;
 };
 
 export abstract class Entity<T> {
+  @PrimaryKey({ type: "uuid" })
+  public readonly id: UniqueEntityID;
 
-  @PrimaryKey({ type: 'uuid' })
-  protected readonly id: UniqueEntityID;
-
-  public readonly props: T;
+  protected readonly props: T;
 
   constructor(props: T, id?: UniqueEntityID) {
     this.id = id ? id : new UniqueEntityID();
     this.props = props;
+    Entity.setProps(this, props);
   }
 
   public equals(object?: Entity<T>): boolean {
@@ -34,4 +34,16 @@ export abstract class Entity<T> {
     return this.id.equals(object.id);
   }
 
+  public toRaw<T = any>(): T {
+    return {
+      id: this.id.toString(),
+      ...this.props,
+    } as unknown as T;
+  }
+
+  private static setProps<T>(entity: Entity<T>, props: T) {
+    Object.keys(props).forEach((propKey) => {
+      entity[propKey] = props[propKey];
+    });
+  }
 }

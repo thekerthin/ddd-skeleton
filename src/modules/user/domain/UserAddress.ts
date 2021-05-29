@@ -13,7 +13,6 @@ export abstract class Props {
 }
 
 export class UserAddress extends ValueObject<Props> {
-
   toValue(): string {
     return `${this.props.street}, ${this.props.city}, ${this.props.country}`;
   }
@@ -25,5 +24,4 @@ export class UserAddress extends ValueObject<Props> {
   public static create(props: Props): UserAddress {
     return new UserAddress(props);
   }
-
 }
